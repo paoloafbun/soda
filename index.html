@@ -15,28 +15,27 @@ html,
 body {
   margin: 0;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
   font-family: "Nunito", sans-serif;
 }
 /* =========================
-   START SCREEN
+   LOGIN SCREEN
 ========================= */
 #loginScreen {
   position: fixed;
   inset: 0;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,.8), transparent 25%),
-    radial-gradient(circle at 80% 80%, rgba(255,232,190,.5), transparent 30%),
+    radial-gradient(circle at 20% 20%, #ffffff 0%, transparent 25%),
+    radial-gradient(circle at 80% 80%, #f5dfb7 0%, transparent 28%),
     #fff8e9;
   transition:
     opacity 1s ease,
     transform 1s ease,
-    visibility 1s;
+    visibility 1s ease;
 }
 #loginScreen.hide {
   opacity: 0;
@@ -51,15 +50,15 @@ body {
   width: min(90%, 420px);
   padding: 42px 35px;
   text-align: center;
-  background: rgba(255, 253, 247, .92);
-  border: 3px solid #e5c99d;
-  border-radius: 32px;
+  background: #fffdf7;
+  border: 3px solid #dfc69d;
+  border-radius: 30px;
   box-shadow:
-    0 12px 0 #d5b681,
-    0 22px 45px rgba(91, 68, 43, .15);
-  animation: cardFloat 4s ease-in-out infinite;
+    0 10px 0 #d3b47f,
+    0 20px 40px rgba(80, 62, 40, .15);
+  animation: floatCard 4s ease-in-out infinite;
 }
-@keyframes cardFloat {
+@keyframes floatCard {
   0%, 100% {
     transform: translateY(0);
   }
@@ -67,29 +66,22 @@ body {
     transform: translateY(-7px);
   }
 }
-.soda-icon {
-  font-size: 58px;
-  margin-bottom: 5px;
-  animation: tinyBounce 2.5s ease-in-out infinite;
-}
-@keyframes tinyBounce {
-  0%, 100% {
-    transform: rotate(-4deg);
-  }
-  50% {
-    transform: rotate(4deg) translateY(-4px);
-  }
+.login-decoration {
+  color: #70bdd8;
+  font-size: 32px;
+  letter-spacing: 7px;
+  margin-bottom: 8px;
 }
 .login-card h1 {
   margin: 0;
-  color: #65452e;
-  font-size: 40px;
+  color: #67472f;
+  font-size: 42px;
   font-weight: 800;
   letter-spacing: 1px;
 }
 .subtitle {
-  margin: 8px 0 28px;
-  color: #9a7956;
+  margin: 7px 0 28px;
+  color: #967453;
   font-size: 15px;
   font-weight: 700;
 }
@@ -103,53 +95,54 @@ body {
 .input-group label {
   display: block;
   margin: 0 0 7px 5px;
-  color: #765638;
+  color: #765538;
   font-size: 14px;
   font-weight: 800;
 }
 .input-group input {
   width: 100%;
   padding: 14px 17px;
-  border: 2px solid #dfc294;
+  border: 2px solid #dfc49a;
   border-radius: 15px;
   outline: none;
   background: #fffaf0;
-  color: #5d422d;
+  color: #60452f;
   font-family: "Nunito", sans-serif;
   font-size: 15px;
   font-weight: 700;
   transition: .2s;
 }
 .input-group input:focus {
-  border-color: #76c9e5;
-  box-shadow: 0 0 0 4px rgba(118, 201, 229, .18);
+  border-color: #71c2df;
+  box-shadow:
+    0 0 0 4px rgba(113, 194, 223, .18);
 }
 /* =========================
    LOGIN BUTTON
 ========================= */
 .login-button {
   width: 100%;
-  margin-top: 8px;
+  margin-top: 7px;
   padding: 14px;
-  border: 3px solid #3b92b4;
+  border: 3px solid #3d93b4;
   border-radius: 16px;
-  background: #6fc4df;
+  background: #6fc5e1;
   color: white;
   font-family: "Nunito", sans-serif;
   font-size: 17px;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 5px 0 #3b92b4;
+  box-shadow: 0 5px 0 #3d93b4;
   transition: .2s;
 }
 .login-button:hover {
-  background: #80cee5;
+  background: #81cee5;
   transform: translateY(-2px);
-  box-shadow: 0 7px 0 #3b92b4;
+  box-shadow: 0 7px 0 #3d93b4;
 }
 .login-button:active {
   transform: translateY(3px);
-  box-shadow: 0 2px 0 #3b92b4;
+  box-shadow: 0 2px 0 #3d93b4;
 }
 #error {
   min-height: 20px;
@@ -159,16 +152,19 @@ body {
   font-weight: 800;
 }
 /* =========================
-   MAIN BLUE SCREEN
+   MAIN BLUE PAGE
 ========================= */
 #mainScreen {
-  position: fixed;
-  inset: 0;
+  min-height: 100vh;
+  position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,.12), transparent 25%),
-    radial-gradient(circle at 80% 70%, rgba(255,255,255,.09), transparent 30%),
-    linear-gradient(135deg, #66c7e6, #78d1eb 45%, #58b9dc);
+    linear-gradient(
+      135deg,
+      #67c6e5,
+      #78d2eb 50%,
+      #5bb9dc
+    );
   opacity: 0;
   transform: scale(1.08);
   transition:
@@ -180,208 +176,277 @@ body {
   transform: scale(1);
 }
 /* =========================
-   BUBBLES
+   SIMPLE WHITE BUBBLES
 ========================= */
 .bubbles {
-  position: absolute;
+  position: fixed;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
+  z-index: 0;
 }
 .bubble {
   position: absolute;
-  bottom: -120px;
+  bottom: -100px;
+  width: 25px;
+  height: 25px;
+  background: white;
   border-radius: 50%;
-  background:
-    radial-gradient(
-      circle at 30% 25%,
-      rgba(255,255,255,.85),
-      rgba(255,255,255,.25) 35%,
-      rgba(255,255,255,.08) 70%
-    );
-  border: 2px solid rgba(255,255,255,.28);
-  animation:
-    rise linear infinite,
-    wobble ease-in-out infinite alternate;
+  opacity: .55;
+  animation: bubbleRise linear infinite;
 }
-@keyframes rise {
-  from {
+@keyframes bubbleRise {
+  0% {
     transform: translateY(0);
     opacity: 0;
   }
   10% {
-    opacity: .8;
+    opacity: .6;
   }
-  85% {
-    opacity: .55;
+  80% {
+    opacity: .6;
   }
-  to {
+  100% {
     transform: translateY(-120vh);
     opacity: 0;
   }
 }
-@keyframes wobble {
-  from {
-    margin-left: -18px;
-  }
-  to {
-    margin-left: 18px;
-  }
-}
-/* Different bubbles */
 .bubble:nth-child(1) {
-  width: 25px;
-  height: 25px;
-  left: 8%;
-  animation-duration: 8s, 2.4s;
-  animation-delay: 0s, 0s;
-}
-.bubble:nth-child(2) {
-  width: 55px;
-  height: 55px;
-  left: 18%;
-  animation-duration: 12s, 3s;
-  animation-delay: 2s, .5s;
-}
-.bubble:nth-child(3) {
   width: 18px;
   height: 18px;
-  left: 30%;
-  animation-duration: 7s, 2s;
-  animation-delay: 1s, .2s;
+  left: 7%;
+  animation-duration: 8s;
 }
-.bubble:nth-child(4) {
-  width: 80px;
-  height: 80px;
-  left: 42%;
-  animation-duration: 14s, 3.5s;
-  animation-delay: 4s, 1s;
-}
-.bubble:nth-child(5) {
-  width: 32px;
-  height: 32px;
-  left: 55%;
-  animation-duration: 9s, 2.2s;
-  animation-delay: 0s, .7s;
-}
-.bubble:nth-child(6) {
-  width: 65px;
-  height: 65px;
-  left: 68%;
-  animation-duration: 13s, 3.2s;
-  animation-delay: 3s, 0s;
-}
-.bubble:nth-child(7) {
-  width: 22px;
-  height: 22px;
-  left: 79%;
-  animation-duration: 7.5s, 2.5s;
-  animation-delay: 1.5s, .3s;
-}
-.bubble:nth-child(8) {
-  width: 45px;
-  height: 45px;
-  left: 91%;
-  animation-duration: 11s, 3s;
-  animation-delay: 5s, 1s;
-}
-.bubble:nth-child(9) {
-  width: 15px;
-  height: 15px;
-  left: 13%;
-  animation-duration: 6s, 2s;
-  animation-delay: 4s, .4s;
-}
-.bubble:nth-child(10) {
+.bubble:nth-child(2) {
   width: 35px;
   height: 35px;
-  left: 87%;
-  animation-duration: 9s, 2.7s;
-  animation-delay: 2.5s, .5s;
+  left: 18%;
+  animation-duration: 11s;
+  animation-delay: 2s;
+}
+.bubble:nth-child(3) {
+  width: 14px;
+  height: 14px;
+  left: 31%;
+  animation-duration: 7s;
+  animation-delay: 1s;
+}
+.bubble:nth-child(4) {
+  width: 45px;
+  height: 45px;
+  left: 43%;
+  animation-duration: 13s;
+  animation-delay: 4s;
+}
+.bubble:nth-child(5) {
+  width: 22px;
+  height: 22px;
+  left: 56%;
+  animation-duration: 9s;
+  animation-delay: 1s;
+}
+.bubble:nth-child(6) {
+  width: 32px;
+  height: 32px;
+  left: 68%;
+  animation-duration: 12s;
+  animation-delay: 3s;
+}
+.bubble:nth-child(7) {
+  width: 15px;
+  height: 15px;
+  left: 79%;
+  animation-duration: 7s;
+  animation-delay: 2s;
+}
+.bubble:nth-child(8) {
+  width: 40px;
+  height: 40px;
+  left: 91%;
+  animation-duration: 10s;
+  animation-delay: 5s;
+}
+.bubble:nth-child(9) {
+  width: 20px;
+  height: 20px;
+  left: 13%;
+  animation-duration: 8s;
+  animation-delay: 4s;
+}
+.bubble:nth-child(10) {
+  width: 28px;
+  height: 28px;
+  left: 85%;
+  animation-duration: 9s;
+  animation-delay: 2s;
 }
 /* =========================
-   MAIN CONTENT
+   PAGE CONTENT
 ========================= */
-.content {
+.page-content {
   position: relative;
   z-index: 2;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  padding: 45px 25px 50px;
+}
+/* =========================
+   HEADER
+========================= */
+header {
+  max-width: 1000px;
+  margin: 0 auto 30px;
+  padding: 28px;
   text-align: center;
   color: white;
-  padding: 25px;
+  background: rgba(255,255,255,.12);
+  border: 2px solid rgba(255,255,255,.3);
+  border-radius: 28px;
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 10px 25px rgba(43, 128, 160, .12);
+  animation: headerAppear 1s ease forwards;
 }
-.content .soda {
-  font-size: 70px;
-  animation:
-    sodaAppear 1.4s ease forwards,
-    sodaFloat 3s ease-in-out 1.4s infinite;
-  opacity: 0;
-}
-@keyframes sodaAppear {
+@keyframes headerAppear {
   from {
     opacity: 0;
-    transform: translateY(25px) scale(.7);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-@keyframes sodaFloat {
-  0%, 100% {
-    transform: translateY(0) rotate(-3deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(3deg);
-  }
-}
-.content h1 {
-  margin: 5px 0 5px;
-  font-size: clamp(40px, 8vw, 70px);
-  font-weight: 800;
-  text-shadow: 0 5px 0 rgba(42, 132, 166, .3);
-  animation: fadeUp 1s ease .2s forwards;
-  opacity: 0;
-}
-.content p {
-  margin: 0;
-  font-size: 17px;
-  font-weight: 700;
-  opacity: 0;
-  animation: fadeUp 1s ease .45s forwards;
-}
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-/* =========================
-   SODA LABEL
-========================= */
-.soda-label {
-  margin-top: 28px;
-  padding: 10px 20px;
-  border: 2px solid rgba(255,255,255,.55);
-  border-radius: 999px;
-  background: rgba(255,255,255,.15);
-  backdrop-filter: blur(8px);
-  font-size: 13px;
+.header-decoration {
+  font-size: 22px;
+  letter-spacing: 9px;
+  margin-bottom: 6px;
+}
+header h1 {
+  margin: 0;
+  font-size: clamp(38px, 7vw, 60px);
   font-weight: 800;
-  letter-spacing: 1px;
-  animation: fadeUp 1s ease .7s forwards;
-  opacity: 0;
+  text-shadow:
+    0 4px 0 rgba(45, 133, 164, .3);
+}
+header p {
+  margin: 7px auto 0;
+  max-width: 650px;
+  font-size: 15px;
+  font-weight: 700;
 }
 /* =========================
-   RESPONSIVE
+   GAME GRID
+========================= */
+.games {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+  gap: 22px;
+}
+/* =========================
+   GAME CARDS
+========================= */
+.game-card {
+  padding: 25px;
+  text-align: center;
+  background: #fffdf7;
+  border: 3px solid #d8c39d;
+  border-radius: 24px;
+  box-shadow:
+    0 7px 0 #c5aa7d,
+    0 12px 25px rgba(41, 111, 139, .16);
+  transition: .2s;
+  animation: cardAppear .7s ease backwards;
+}
+.game-card:nth-child(1) {
+  animation-delay: .15s;
+}
+.game-card:nth-child(2) {
+  animation-delay: .25s;
+}
+.game-card:nth-child(3) {
+  animation-delay: .35s;
+}
+.game-card:nth-child(4) {
+  animation-delay: .45s;
+}
+.game-card:nth-child(5) {
+  animation-delay: .55s;
+}
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.game-card:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow:
+    0 12px 0 #c5aa7d,
+    0 18px 28px rgba(41, 111, 139, .18);
+}
+.card-decoration {
+  color: #70bdd8;
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+.game-card h2 {
+  margin: 5px 0 8px;
+  color: #62442e;
+  font-size: 22px;
+  font-weight: 800;
+}
+.game-card p {
+  min-height: 42px;
+  margin: 0 0 18px;
+  color: #80664c;
+  font-size: 14px;
+  font-weight: 700;
+}
+/* =========================
+   GAME BUTTON
+========================= */
+.play-button {
+  padding: 10px 23px;
+  border: 3px solid #3e91b0;
+  border-radius: 14px;
+  background: #69bfdc;
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #3b88a5;
+  transition: .2s;
+}
+.play-button:hover {
+  background: #7bcbe3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #3b88a5;
+}
+.play-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #3b88a5;
+}
+/* =========================
+   FOOTER
+========================= */
+footer {
+  margin-top: 30px;
+  text-align: center;
+  color: rgba(255,255,255,.9);
+  font-size: 13px;
+  font-weight: 700;
+}
+/* =========================
+   MOBILE
 ========================= */
 @media (max-width: 600px) {
   .login-card {
@@ -390,29 +455,36 @@ body {
   .login-card h1 {
     font-size: 34px;
   }
-  .content h1 {
-    font-size: 45px;
+  .page-content {
+    padding: 25px 18px 40px;
   }
-  .content p {
-    font-size: 15px;
+  header {
+    padding: 24px 18px;
+  }
+  .games {
+    grid-template-columns: 1fr;
   }
 }
 </style>
 </head>
 <body>
 <!-- =========================
-     LOGIN SCREEN
+     LOGIN
 ========================= -->
 <div id="loginScreen">
   <div class="login-card">
-    <div class="soda-icon">🥤</div>
+    <div class="login-decoration">
+      🎐 𓂃 ࣪˖
+    </div>
     <h1>Welcome!</h1>
     <div class="subtitle">
-      welcome to cream soda ⋆｡°✩
+      welcome to cream soda ♡
     </div>
     <form id="loginForm">
       <div class="input-group">
-        <label for="username">username</label>
+        <label for="username">
+          username
+        </label>
         <input
           id="username"
           type="text"
@@ -422,7 +494,9 @@ body {
         >
       </div>
       <div class="input-group">
-        <label for="password">password</label>
+        <label for="password">
+          password
+        </label>
         <input
           id="password"
           type="password"
@@ -430,17 +504,20 @@ body {
           required
         >
       </div>
-      <button class="login-button" type="submit">
-        enter the soda 🫧
+      <button
+        class="login-button"
+        type="submit">
+        enter ♡
       </button>
       <div id="error"></div>
     </form>
   </div>
 </div>
 <!-- =========================
-     MAIN SCREEN
+     MAIN PAGE
 ========================= -->
 <div id="mainScreen">
+  <!-- SIMPLE BUBBLES -->
   <div class="bubbles">
     <div class="bubble"></div>
     <div class="bubble"></div>
@@ -453,19 +530,110 @@ body {
     <div class="bubble"></div>
     <div class="bubble"></div>
   </div>
-  <div class="content">
-    <div class="soda">
-      🥤
+  <div class="page-content">
+    <!-- HEADER -->
+    <header>
+      <div class="header-decoration">
+        🎐 𓂃 ࣪˖ 🫧
+      </div>
+      <h1>
+        cream soda
+      </h1>
+      <p>
+        little games for a fizzy little day ♡
+      </p>
+    </header>
+    <!-- EXACTLY 5 GAMES -->
+    <div class="games">
+      <!-- GAME 1 -->
+      <div class="game-card">
+        <div class="card-decoration">
+          🎐
+        </div>
+        <h2>
+          retro games
+        </h2>
+        <p>
+          a bunch of classic games
+        </p>
+        <button
+          class="play-button"
+          onclick="openGame('https://classicgamezone.com/')">
+          Play
+        </button>
+      </div>
+      <!-- GAME 2 -->
+      <div class="game-card">
+        <div class="card-decoration">
+          🍮
+        </div>
+        <h2>
+          chef game
+        </h2>
+        <p>
+          make whatever you want
+        </p>
+        <button
+          class="play-button"
+          onclick="openGame('https://r74n.com/cook/')">
+          Play
+        </button>
+      </div>
+      <!-- GAME 3 -->
+      <div class="game-card">
+        <div class="card-decoration">
+          🍏
+        </div>
+        <h2>
+          strong dog 2
+        </h2>
+        <p>
+          games games games
+        </p>
+        <button
+          class="play-button"
+          onclick="openGame('https://jman1593.github.io/')">
+          Play
+        </button>
+      </div>
+      <!-- GAME 4 -->
+      <div class="game-card">
+        <div class="card-decoration">
+          🍥
+        </div>
+        <h2>
+          kiwi games
+        </h2>
+        <p>
+          tiny games to play
+        </p>
+        <button
+          class="play-button"
+          onclick="openGame('https://studysync.co.uk')">
+          Play
+        </button>
+      </div>
+      <!-- GAME 5 -->
+      <div class="game-card">
+        <div class="card-decoration">
+          🍡
+        </div>
+        <h2>
+          poki
+        </h2>
+        <p>
+          lots of browser games
+        </p>
+        <button
+          class="play-button"
+          onclick="openGame('https://poki.com')">
+          Play
+        </button>
+      </div>
     </div>
-    <h1>
-      cream soda
-    </h1>
-    <p>
-      fizzy little things ♡
-    </p>
-    <div class="soda-label">
-      🫧 welcome, soda lover 🫧
-    </div>
+    <footer>
+      🎐 made with cream soda & little bubbles 🫧
+    </footer>
   </div>
 </div>
 <script>
@@ -491,32 +659,33 @@ document
       document.getElementById("loginScreen");
     const mainScreen =
       document.getElementById("mainScreen");
-    /* Correct login */
     if (
       username === correctUsername &&
       password === correctPassword
     ) {
       error.textContent = "";
-      /*
-        Start the blue bubbly screen
-        underneath the login screen.
-      */
+      /* Show the blue page */
       mainScreen.classList.add("show");
-      /*
-        Give the blue screen a moment
-        to appear before removing
-        the welcome screen.
-      */
+      /* Smoothly fade away login */
       setTimeout(function() {
         loginScreen.classList.add("hide");
       }, 250);
     }
-    /* Incorrect login */
     else {
       error.textContent =
-        "hm... that doesn't look right (｡•́︿•̀｡)";
+        "hm... wrong username or password (｡•́︿•̀｡)";
     }
   });
+/* =========================
+   OPEN GAME
+========================= */
+function openGame(url) {
+  window.open(
+    url,
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
 </script>
 </body>
 </html>
