@@ -1,9 +1,522 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cream Soda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Nunito", sans-serif;
+}
+/* =========================
+   START SCREEN
+========================= */
+#loginScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.8), transparent 25%),
+    radial-gradient(circle at 80% 80%, rgba(255,232,190,.5), transparent 30%),
+    #fff8e9;
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    visibility 1s;
+}
+#loginScreen.hide {
+  opacity: 0;
+  transform: scale(1.08);
+  visibility: hidden;
+  pointer-events: none;
+}
+/* =========================
+   LOGIN CARD
+========================= */
+.login-card {
+  width: min(90%, 420px);
+  padding: 42px 35px;
+  text-align: center;
+  background: rgba(255, 253, 247, .92);
+  border: 3px solid #e5c99d;
+  border-radius: 32px;
+  box-shadow:
+    0 12px 0 #d5b681,
+    0 22px 45px rgba(91, 68, 43, .15);
+  animation: cardFloat 4s ease-in-out infinite;
+}
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+.soda-icon {
+  font-size: 58px;
+  margin-bottom: 5px;
+  animation: tinyBounce 2.5s ease-in-out infinite;
+}
+@keyframes tinyBounce {
+  0%, 100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg) translateY(-4px);
+  }
+}
+.login-card h1 {
+  margin: 0;
+  color: #65452e;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.subtitle {
+  margin: 8px 0 28px;
+  color: #9a7956;
+  font-size: 15px;
+  font-weight: 700;
+}
+/* =========================
+   INPUTS
+========================= */
+.input-group {
+  text-align: left;
+  margin-bottom: 17px;
+}
+.input-group label {
+  display: block;
+  margin: 0 0 7px 5px;
+  color: #765638;
+  font-size: 14px;
+  font-weight: 800;
+}
+.input-group input {
+  width: 100%;
+  padding: 14px 17px;
+  border: 2px solid #dfc294;
+  border-radius: 15px;
+  outline: none;
+  background: #fffaf0;
+  color: #5d422d;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  transition: .2s;
+}
+.input-group input:focus {
+  border-color: #76c9e5;
+  box-shadow: 0 0 0 4px rgba(118, 201, 229, .18);
+}
+/* =========================
+   LOGIN BUTTON
+========================= */
+.login-button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px;
+  border: 3px solid #3b92b4;
+  border-radius: 16px;
+  background: #6fc4df;
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #3b92b4;
+  transition: .2s;
+}
+.login-button:hover {
+  background: #80cee5;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0 #3b92b4;
+}
+.login-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #3b92b4;
+}
+#error {
+  min-height: 20px;
+  margin-top: 15px;
+  color: #c47768;
+  font-size: 13px;
+  font-weight: 800;
+}
+/* =========================
+   MAIN BLUE SCREEN
+========================= */
+#mainScreen {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.12), transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,.09), transparent 30%),
+    linear-gradient(135deg, #66c7e6, #78d1eb 45%, #58b9dc);
+  opacity: 0;
+  transform: scale(1.08);
+  transition:
+    opacity 1.3s ease,
+    transform 1.3s ease;
+}
+#mainScreen.show {
+  opacity: 1;
+  transform: scale(1);
+}
+/* =========================
+   BUBBLES
+========================= */
+.bubbles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.bubble {
+  position: absolute;
+  bottom: -120px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(255,255,255,.85),
+      rgba(255,255,255,.25) 35%,
+      rgba(255,255,255,.08) 70%
+    );
+  border: 2px solid rgba(255,255,255,.28);
+  animation:
+    rise linear infinite,
+    wobble ease-in-out infinite alternate;
+}
+@keyframes rise {
+  from {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: .8;
+  }
+  85% {
+    opacity: .55;
+  }
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+@keyframes wobble {
+  from {
+    margin-left: -18px;
+  }
+  to {
+    margin-left: 18px;
+  }
+}
+/* Different bubbles */
+.bubble:nth-child(1) {
+  width: 25px;
+  height: 25px;
+  left: 8%;
+  animation-duration: 8s, 2.4s;
+  animation-delay: 0s, 0s;
+}
+.bubble:nth-child(2) {
+  width: 55px;
+  height: 55px;
+  left: 18%;
+  animation-duration: 12s, 3s;
+  animation-delay: 2s, .5s;
+}
+.bubble:nth-child(3) {
+  width: 18px;
+  height: 18px;
+  left: 30%;
+  animation-duration: 7s, 2s;
+  animation-delay: 1s, .2s;
+}
+.bubble:nth-child(4) {
+  width: 80px;
+  height: 80px;
+  left: 42%;
+  animation-duration: 14s, 3.5s;
+  animation-delay: 4s, 1s;
+}
+.bubble:nth-child(5) {
+  width: 32px;
+  height: 32px;
+  left: 55%;
+  animation-duration: 9s, 2.2s;
+  animation-delay: 0s, .7s;
+}
+.bubble:nth-child(6) {
+  width: 65px;
+  height: 65px;
+  left: 68%;
+  animation-duration: 13s, 3.2s;
+  animation-delay: 3s, 0s;
+}
+.bubble:nth-child(7) {
+  width: 22px;
+  height: 22px;
+  left: 79%;
+  animation-duration: 7.5s, 2.5s;
+  animation-delay: 1.5s, .3s;
+}
+.bubble:nth-child(8) {
+  width: 45px;
+  height: 45px;
+  left: 91%;
+  animation-duration: 11s, 3s;
+  animation-delay: 5s, 1s;
+}
+.bubble:nth-child(9) {
+  width: 15px;
+  height: 15px;
+  left: 13%;
+  animation-duration: 6s, 2s;
+  animation-delay: 4s, .4s;
+}
+.bubble:nth-child(10) {
+  width: 35px;
+  height: 35px;
+  left: 87%;
+  animation-duration: 9s, 2.7s;
+  animation-delay: 2.5s, .5s;
+}
+/* =========================
+   MAIN CONTENT
+========================= */
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 25px;
+}
+.content .soda {
+  font-size: 70px;
+  animation:
+    sodaAppear 1.4s ease forwards,
+    sodaFloat 3s ease-in-out 1.4s infinite;
+  opacity: 0;
+}
+@keyframes sodaAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.7);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes sodaFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+.content h1 {
+  margin: 5px 0 5px;
+  font-size: clamp(40px, 8vw, 70px);
+  font-weight: 800;
+  text-shadow: 0 5px 0 rgba(42, 132, 166, .3);
+  animation: fadeUp 1s ease .2s forwards;
+  opacity: 0;
+}
+.content p {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  opacity: 0;
+  animation: fadeUp 1s ease .45s forwards;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* =========================
+   SODA LABEL
+========================= */
+.soda-label {
+  margin-top: 28px;
+  padding: 10px 20px;
+  border: 2px solid rgba(255,255,255,.55);
+  border-radius: 999px;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  animation: fadeUp 1s ease .7s forwards;
+  opacity: 0;
+}
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 600px) {
+  .login-card {
+    padding: 35px 25px;
+  }
+  .login-card h1 {
+    font-size: 34px;
+  }
+  .content h1 {
+    font-size: 45px;
+  }
+  .content p {
+    font-size: 15px;
+  }
+}
+</style>
+</head>
 <body>
-
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
-
+<!-- =========================
+     LOGIN SCREEN
+========================= -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="soda-icon">🥤</div>
+    <h1>Welcome!</h1>
+    <div class="subtitle">
+      welcome to cream soda ⋆｡°✩
+    </div>
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="username">username</label>
+        <input
+          id="username"
+          type="text"
+          placeholder="sodacream"
+          autocomplete="off"
+          required
+        >
+      </div>
+      <div class="input-group">
+        <label for="password">password</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="creamsoda"
+          required
+        >
+      </div>
+      <button class="login-button" type="submit">
+        enter the soda 🫧
+      </button>
+      <div id="error"></div>
+    </form>
+  </div>
+</div>
+<!-- =========================
+     MAIN SCREEN
+========================= -->
+<div id="mainScreen">
+  <div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+  <div class="content">
+    <div class="soda">
+      🥤
+    </div>
+    <h1>
+      cream soda
+    </h1>
+    <p>
+      fizzy little things ♡
+    </p>
+    <div class="soda-label">
+      🫧 welcome, soda lover 🫧
+    </div>
+  </div>
+</div>
+<script>
+/* =========================
+   LOGIN DETAILS
+========================= */
+const correctUsername = "sodacream";
+const correctPassword = "creamsoda";
+/* =========================
+   LOGIN
+========================= */
+document
+  .getElementById("loginForm")
+  .addEventListener("submit", function(event) {
+    event.preventDefault();
+    const username =
+      document.getElementById("username").value;
+    const password =
+      document.getElementById("password").value;
+    const error =
+      document.getElementById("error");
+    const loginScreen =
+      document.getElementById("loginScreen");
+    const mainScreen =
+      document.getElementById("mainScreen");
+    /* Correct login */
+    if (
+      username === correctUsername &&
+      password === correctPassword
+    ) {
+      error.textContent = "";
+      /*
+        Start the blue bubbly screen
+        underneath the login screen.
+      */
+      mainScreen.classList.add("show");
+      /*
+        Give the blue screen a moment
+        to appear before removing
+        the welcome screen.
+      */
+      setTimeout(function() {
+        loginScreen.classList.add("hide");
+      }, 250);
+    }
+    /* Incorrect login */
+    else {
+      error.textContent =
+        "hm... that doesn't look right (｡•́︿•̀｡)";
+    }
+  });
+</script>
 </body>
 </html>
