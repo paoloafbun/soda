@@ -257,10 +257,6 @@ body {
 
   overflow: hidden;
 
-  /*
-    CREAM BACKGROUND
-  */
-
   background:
     linear-gradient(
       135deg,
@@ -449,7 +445,6 @@ header p {
 
 /* =========================================================
    GAME CARDS
-   BROWN / BLUE GRADIENT OUTLINE
 ========================================================= */
 
 .game-card {
@@ -1288,9 +1283,29 @@ footer {
    LOGIN
 ========================================================= */
 
-const correctUsername = "sodacream, alex";
+/*
+   ADD MORE ACCOUNTS HERE
 
-const correctPassword = "creamsoda, 55660011";
+   Example:
+
+   {
+     username: "alex",
+     password: "55660011"
+   }
+
+*/
+
+const accounts = [
+  {
+    username: "sodacream",
+    password: "creamsoda"
+  },
+
+  {
+    username: "alex",
+    password: "55660011"
+  }
+];
 
 
 document
@@ -1300,7 +1315,7 @@ document
     event.preventDefault();
 
     const username =
-      document.getElementById("username").value;
+      document.getElementById("username").value.trim();
 
     const password =
       document.getElementById("password").value;
@@ -1315,10 +1330,22 @@ document
       document.getElementById("mainScreen");
 
 
-    if (
-      username === correctUsername &&
-      password === correctPassword
-    ) {
+    /*
+      CHECK IF THE USERNAME AND PASSWORD
+      MATCH ONE OF THE ACCOUNTS ABOVE
+    */
+
+    const validAccount = accounts.some(function(account) {
+
+      return (
+        account.username === username &&
+        account.password === password
+      );
+
+    });
+
+
+    if (validAccount) {
 
       error.textContent = "";
 
