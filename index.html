@@ -24,7 +24,7 @@ body {
 }
 
 body {
-  background: #244f7c;
+  background: #fff8e9;
 }
 
 
@@ -248,7 +248,6 @@ body {
 
 /* =========================================================
    MAIN WEBSITE
-   WARM CREAM + BROWN + BLUE
 ========================================================= */
 
 #mainScreen {
@@ -258,14 +257,16 @@ body {
 
   overflow: hidden;
 
+  /*
+    CREAM BACKGROUND
+  */
+
   background:
     linear-gradient(
       135deg,
-      #8a7357 0%,
-      #725d46 25%,
-      #526b80 52%,
-      #355a78 76%,
-      #244f7c 100%
+      #fffdf5 0%,
+      #fff8e9 45%,
+      #f7ecd7 100%
     );
 
   opacity: 0;
@@ -285,7 +286,7 @@ body {
 
 
 /* =========================================================
-   EXTRA BROWN + BLUE GLOW
+   SOFT CREAM GLOW
 ========================================================= */
 
 #mainScreen::before {
@@ -300,182 +301,21 @@ body {
   background:
     radial-gradient(
       circle at 15% 15%,
-      rgba(255,255,255,.25),
+      rgba(255,255,255,.75),
       transparent 25%
     ),
     radial-gradient(
       circle at 85% 80%,
-      rgba(216,189,141,.22),
+      rgba(216,189,141,.18),
       transparent 30%
     ),
     radial-gradient(
       circle at 50% 50%,
-      rgba(255,248,233,.08),
+      rgba(255,255,255,.25),
       transparent 45%
-    ),
-    linear-gradient(
-      135deg,
-      rgba(255,248,233,.10),
-      transparent 45%,
-      rgba(23,61,104,.18)
     );
 
   pointer-events: none;
-}
-
-
-/* =========================================================
-   SIMPLE WHITE BUBBLES
-========================================================= */
-
-.bubbles {
-  position: fixed;
-
-  inset: 0;
-
-  overflow: hidden;
-
-  pointer-events: none;
-
-  z-index: 1;
-}
-
-.bubble {
-  position: absolute;
-
-  bottom: -80px;
-
-  background: #ffffff;
-
-  border-radius: 50%;
-
-  opacity: .7;
-
-  animation:
-    bubbleRise linear infinite;
-}
-
-@keyframes bubbleRise {
-
-  0% {
-    transform: translateY(0);
-
-    opacity: 0;
-  }
-
-  12% {
-    opacity: .7;
-  }
-
-  80% {
-    opacity: .7;
-  }
-
-  100% {
-    transform: translateY(-115vh);
-
-    opacity: 0;
-  }
-
-}
-
-.bubble:nth-child(1) {
-  width: 14px;
-  height: 14px;
-
-  left: 6%;
-
-  animation-duration: 8s;
-}
-
-.bubble:nth-child(2) {
-  width: 25px;
-  height: 25px;
-
-  left: 16%;
-
-  animation-duration: 11s;
-  animation-delay: 2s;
-}
-
-.bubble:nth-child(3) {
-  width: 10px;
-  height: 10px;
-
-  left: 27%;
-
-  animation-duration: 7s;
-  animation-delay: 1s;
-}
-
-.bubble:nth-child(4) {
-  width: 34px;
-  height: 34px;
-
-  left: 39%;
-
-  animation-duration: 13s;
-  animation-delay: 4s;
-}
-
-.bubble:nth-child(5) {
-  width: 18px;
-  height: 18px;
-
-  left: 51%;
-
-  animation-duration: 9s;
-  animation-delay: 1s;
-}
-
-.bubble:nth-child(6) {
-  width: 28px;
-  height: 28px;
-
-  left: 64%;
-
-  animation-duration: 12s;
-  animation-delay: 3s;
-}
-
-.bubble:nth-child(7) {
-  width: 12px;
-  height: 12px;
-
-  left: 76%;
-
-  animation-duration: 7s;
-  animation-delay: 2s;
-}
-
-.bubble:nth-child(8) {
-  width: 38px;
-  height: 38px;
-
-  left: 88%;
-
-  animation-duration: 10s;
-  animation-delay: 5s;
-}
-
-.bubble:nth-child(9) {
-  width: 17px;
-  height: 17px;
-
-  left: 12%;
-
-  animation-duration: 9s;
-  animation-delay: 4s;
-}
-
-.bubble:nth-child(10) {
-  width: 22px;
-  height: 22px;
-
-  left: 82%;
-
-  animation-duration: 8s;
-  animation-delay: 2s;
 }
 
 
@@ -507,14 +347,14 @@ header {
 
   text-align: center;
 
-  background: rgba(255, 248, 233, .20);
+  background: rgba(255,253,247,.82);
 
-  border: 2px solid rgba(255, 248, 233, .60);
+  border: 2px solid rgba(216,189,141,.75);
 
   border-radius: 30px;
 
   box-shadow:
-    0 10px 30px rgba(54, 47, 37, .22);
+    0 10px 30px rgba(84, 64, 38, .14);
 
   backdrop-filter: blur(7px);
 
@@ -541,7 +381,7 @@ header {
 }
 
 .header-top {
-  color: #fff8e9;
+  color: #174c70;
 
   font-size: 23px;
 
@@ -563,7 +403,7 @@ header {
 header h1 {
   margin: 0;
 
-  color: #fffdf7;
+  color: #173d68;
 
   font-size:
     clamp(42px, 8vw, 68px);
@@ -573,20 +413,17 @@ header h1 {
   letter-spacing: 1px;
 
   text-shadow:
-    0 4px 0 rgba(23, 61, 104, .35);
+    0 4px 0 rgba(216,189,141,.35);
 }
 
 header p {
   margin: 6px 0 0;
 
-  color: #fff8e9;
+  color: #806d55;
 
   font-size: 15px;
 
   font-weight: 700;
-
-  text-shadow:
-    0 2px 4px rgba(54, 47, 37, .25);
 }
 
 
@@ -612,7 +449,7 @@ header p {
 
 /* =========================================================
    GAME CARDS
-   BROWN + BLUE GRADIENT OUTLINE
+   BROWN / BLUE GRADIENT OUTLINE
 ========================================================= */
 
 .game-card {
@@ -623,7 +460,7 @@ header p {
 
   text-align: center;
 
-  background: rgba(255, 253, 247, .95);
+  background: rgba(255,253,247,.96);
 
   border: 3px solid transparent;
 
@@ -631,16 +468,16 @@ header p {
 
   background-image:
     linear-gradient(
-      rgba(255, 253, 247, .95),
-      rgba(255, 253, 247, .95)
+      rgba(255,253,247,.96),
+      rgba(255,253,247,.96)
     ),
     linear-gradient(
       135deg,
-      #8d7351,
-      #d8bd8d,
-      #557b9a,
+      #173d68,
       #244f7c,
-      #173d68
+      #55bfdc,
+      #d8bd8d,
+      #806d55
     );
 
   background-origin: border-box;
@@ -650,8 +487,8 @@ header p {
     border-box;
 
   box-shadow:
-    0 7px 0 #6b5237,
-    0 14px 30px rgba(54, 47, 37, .25);
+    0 7px 0 #c8aa78,
+    0 14px 30px rgba(84, 64, 38, .18);
 
   transition:
     transform .2s ease,
@@ -709,8 +546,8 @@ header p {
     translateY(-6px);
 
   box-shadow:
-    0 12px 0 #6b5237,
-    0 20px 35px rgba(54, 47, 37, .30);
+    0 12px 0 #c8aa78,
+    0 20px 35px rgba(84, 64, 38, .25);
 }
 
 
@@ -720,7 +557,7 @@ header p {
 
 .game-decoration {
 
-  color: #244f7c;
+  color: #174c70;
 
   font-size: 23px;
 
@@ -834,17 +671,13 @@ footer {
     center;
 
   color:
-    #fff8e9;
+    #806d55;
 
   font-size:
     13px;
 
   font-weight:
     700;
-
-  text-shadow:
-    0 2px 4px
-    rgba(54, 47, 37, .3);
 }
 
 
@@ -867,7 +700,7 @@ footer {
     500;
 
   background:
-    #173d68;
+    #052e49;
 }
 
 #gameFrame {
@@ -917,7 +750,7 @@ footer {
 .player-button {
 
   border:
-    3px solid #102e4f;
+    3px solid #032d4c;
 
   border-radius:
     13px;
@@ -942,7 +775,7 @@ footer {
     pointer;
 
   box-shadow:
-    0 4px 0 #102e4f;
+    0 4px 0 #021d31;
 
   transition:
     .2s;
@@ -951,13 +784,13 @@ footer {
 #original {
 
   background:
-    #2d608e;
+    #08749b;
 }
 
 #close {
 
   background:
-    #244f7c;
+    #06466e;
 }
 
 .player-button:hover {
@@ -995,10 +828,10 @@ footer {
     column;
 
   background:
-    #fff8e9;
+    #8ed9eb;
 
   color:
-    #173d68;
+    #063e67;
 
   font-size:
     22px;
@@ -1141,24 +974,6 @@ footer {
 ======================================================= -->
 
 <div id="mainScreen">
-
-
-  <!-- SIMPLE WHITE BUBBLES -->
-
-  <div class="bubbles">
-
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-
-  </div>
 
 
   <div class="page">
@@ -1315,7 +1130,8 @@ footer {
 
       </div>
 
-      <!-- GAME 4 -->
+
+      <!-- GAME 5 -->
 
       <div class="game-card">
 
@@ -1345,7 +1161,7 @@ footer {
       </div>
 
 
-      <!-- GAME 5 -->
+      <!-- GAME 6 -->
 
       <div class="game-card">
 
@@ -1375,7 +1191,7 @@ footer {
       </div>
 
 
-      <!-- GAME 6 -->
+      <!-- GAME 7 -->
 
       <div class="game-card">
 
