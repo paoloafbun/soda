@@ -42,12 +42,10 @@ body {
   justify-content: center;
 
   background:
-    radial-gradient(
-      circle at 20% 15%,
-      #ffffff 0%,
-      transparent 25%
-    ),
-    #fff8e9;
+    url("login-background.jpg")
+    center center /
+    cover
+    no-repeat;
 
   transition:
     opacity 1s ease,
@@ -517,6 +515,10 @@ header p {
   animation-delay: .65s;
 }
 
+.game-card:nth-child(7) {
+  animation-delay: .75s;
+}
+
 @keyframes cardIn {
 
   from {
@@ -970,11 +972,7 @@ footer {
 
 <div id="mainScreen">
 
-
   <div class="page">
-
-
-    <!-- HEADER -->
 
     <header>
 
@@ -998,10 +996,6 @@ footer {
 
     </header>
 
-
-    <!-- =================================================
-         GAMES
-    ================================================== -->
 
     <div class="games">
 
@@ -1284,15 +1278,17 @@ footer {
 ========================================================= */
 
 /*
-   ADD MORE ACCOUNTS HERE
+   ADD MORE LOGIN ACCOUNTS HERE
+
+   Each account is:
+   username: "username",
+   password: "password"
 
    Example:
-
    {
-     username: "alex",
-     password: "55660011"
+     username: "sodacream",
+     password: "creamsoda"
    }
-
 */
 
 const accounts = [
@@ -1315,10 +1311,15 @@ document
     event.preventDefault();
 
     const username =
-      document.getElementById("username").value.trim();
+      document
+        .getElementById("username")
+        .value
+        .trim();
 
     const password =
-      document.getElementById("password").value;
+      document
+        .getElementById("password")
+        .value;
 
     const error =
       document.getElementById("error");
@@ -1331,18 +1332,20 @@ document
 
 
     /*
-      CHECK IF THE USERNAME AND PASSWORD
-      MATCH ONE OF THE ACCOUNTS ABOVE
+       CHECK IF THE ENTERED
+       USERNAME + PASSWORD
+       MATCH ONE OF THE ACCOUNTS
     */
 
-    const validAccount = accounts.some(function(account) {
+    const validAccount =
+      accounts.some(function(account) {
 
-      return (
-        account.username === username &&
-        account.password === password
-      );
+        return (
+          account.username === username &&
+          account.password === password
+        );
 
-    });
+      });
 
 
     if (validAccount) {
@@ -1385,10 +1388,6 @@ function openGame(url, mode) {
   currentGameURL = url;
 
 
-  /*
-    REDIRECT
-  */
-
   if (mode === "redirect") {
 
     window.open(
@@ -1400,10 +1399,6 @@ function openGame(url, mode) {
     return;
   }
 
-
-  /*
-    EMBEDDED PLAYER
-  */
 
   const player =
     document.getElementById("player");
