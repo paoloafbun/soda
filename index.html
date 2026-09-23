@@ -24,7 +24,7 @@ body {
 }
 
 body {
-  background: #00cfe8;
+  background: #244f7c;
 }
 
 
@@ -248,6 +248,7 @@ body {
 
 /* =========================================================
    MAIN WEBSITE
+   WARM CREAM + BROWN + BLUE
 ========================================================= */
 
 #mainScreen {
@@ -257,18 +258,14 @@ body {
 
   overflow: hidden;
 
-  /*
-    VIBRANT CYAN CREAM-SODA BACKGROUND
-  */
-
   background:
     linear-gradient(
       135deg,
-      #00eafa 0%,
-      #00d9ee 22%,
-      #00c9e8 45%,
-      #00b8df 68%,
-      #009fd0 100%
+      #8a7357 0%,
+      #725d46 25%,
+      #526b80 52%,
+      #355a78 76%,
+      #244f7c 100%
     );
 
   opacity: 0;
@@ -288,7 +285,7 @@ body {
 
 
 /* =========================================================
-   EXTRA CYAN GLOW
+   EXTRA BROWN + BLUE GLOW
 ========================================================= */
 
 #mainScreen::before {
@@ -303,24 +300,24 @@ body {
   background:
     radial-gradient(
       circle at 15% 15%,
-      rgba(255,255,255,.28),
+      rgba(255,255,255,.25),
       transparent 25%
     ),
     radial-gradient(
       circle at 85% 80%,
-      rgba(0,245,255,.28),
+      rgba(216,189,141,.22),
       transparent 30%
     ),
     radial-gradient(
       circle at 50% 50%,
-      rgba(255,255,255,.07),
+      rgba(255,248,233,.08),
       transparent 45%
     ),
     linear-gradient(
       135deg,
-      rgba(255,255,255,.08),
+      rgba(255,248,233,.10),
       transparent 45%,
-      rgba(0,80,150,.10)
+      rgba(23,61,104,.18)
     );
 
   pointer-events: none;
@@ -510,14 +507,14 @@ header {
 
   text-align: center;
 
-  background: rgba(230, 251, 255, .22);
+  background: rgba(255, 248, 233, .20);
 
-  border: 2px solid rgba(255,255,255,.60);
+  border: 2px solid rgba(255, 248, 233, .60);
 
   border-radius: 30px;
 
   box-shadow:
-    0 10px 30px rgba(0, 65, 95, .18);
+    0 10px 30px rgba(54, 47, 37, .22);
 
   backdrop-filter: blur(7px);
 
@@ -544,7 +541,7 @@ header {
 }
 
 .header-top {
-  color: #eaffff;
+  color: #fff8e9;
 
   font-size: 23px;
 
@@ -566,7 +563,7 @@ header {
 header h1 {
   margin: 0;
 
-  color: #ffffff;
+  color: #fffdf7;
 
   font-size:
     clamp(42px, 8vw, 68px);
@@ -576,20 +573,20 @@ header h1 {
   letter-spacing: 1px;
 
   text-shadow:
-    0 4px 0 rgba(0, 73, 110, .35);
+    0 4px 0 rgba(23, 61, 104, .35);
 }
 
 header p {
   margin: 6px 0 0;
 
-  color: #e9fcff;
+  color: #fff8e9;
 
   font-size: 15px;
 
   font-weight: 700;
 
   text-shadow:
-    0 2px 4px rgba(0, 70, 100, .25);
+    0 2px 4px rgba(54, 47, 37, .25);
 }
 
 
@@ -615,7 +612,7 @@ header p {
 
 /* =========================================================
    GAME CARDS
-   CYAN / AQUA GRADIENT OUTLINE
+   BROWN + BLUE GRADIENT OUTLINE
 ========================================================= */
 
 .game-card {
@@ -626,7 +623,7 @@ header p {
 
   text-align: center;
 
-  background: rgba(248, 254, 255, .94);
+  background: rgba(255, 253, 247, .95);
 
   border: 3px solid transparent;
 
@@ -634,16 +631,16 @@ header p {
 
   background-image:
     linear-gradient(
-      rgba(248, 254, 255, .94),
-      rgba(248, 254, 255, .94)
+      rgba(255, 253, 247, .95),
+      rgba(255, 253, 247, .95)
     ),
     linear-gradient(
       135deg,
-      #006f9e,
-      #00d5e8,
-      #49f0ed,
-      #008bb5,
-      #00577f
+      #8d7351,
+      #d8bd8d,
+      #557b9a,
+      #244f7c,
+      #173d68
     );
 
   background-origin: border-box;
@@ -653,8 +650,8 @@ header p {
     border-box;
 
   box-shadow:
-    0 7px 0 #00577f,
-    0 14px 30px rgba(0, 73, 105, .25);
+    0 7px 0 #6b5237,
+    0 14px 30px rgba(54, 47, 37, .25);
 
   transition:
     transform .2s ease,
@@ -712,8 +709,8 @@ header p {
     translateY(-6px);
 
   box-shadow:
-    0 12px 0 #00577f,
-    0 20px 35px rgba(0, 73, 105, .30);
+    0 12px 0 #6b5237,
+    0 20px 35px rgba(54, 47, 37, .30);
 }
 
 
@@ -723,7 +720,7 @@ header p {
 
 .game-decoration {
 
-  color: #006a91;
+  color: #244f7c;
 
   font-size: 23px;
 
@@ -739,7 +736,7 @@ header p {
   margin:
     4px 0 7px;
 
-  color: #063e67;
+  color: #173d68;
 
   font-size: 22px;
 
@@ -753,7 +750,7 @@ header p {
   margin:
     0 0 18px;
 
-  color: #526f80;
+  color: #806d55;
 
   font-size: 14px;
 
@@ -771,13 +768,13 @@ header p {
     10px 24px;
 
   border:
-    3px solid #063e67;
+    3px solid #173d68;
 
   border-radius:
     14px;
 
   background:
-    #075783;
+    #244f7c;
 
   color:
     white;
@@ -796,7 +793,7 @@ header p {
     pointer;
 
   box-shadow:
-    0 4px 0 #032d4c;
+    0 4px 0 #102e4f;
 
   transition:
     .2s;
@@ -805,13 +802,13 @@ header p {
 .play-button:hover {
 
   background:
-    #08729b;
+    #2d608e;
 
   transform:
     translateY(-2px);
 
   box-shadow:
-    0 6px 0 #032d4c;
+    0 6px 0 #102e4f;
 }
 
 .play-button:active {
@@ -820,7 +817,7 @@ header p {
     translateY(2px);
 
   box-shadow:
-    0 2px 0 #032d4c;
+    0 2px 0 #102e4f;
 }
 
 
@@ -837,7 +834,7 @@ footer {
     center;
 
   color:
-    #efffff;
+    #fff8e9;
 
   font-size:
     13px;
@@ -847,7 +844,7 @@ footer {
 
   text-shadow:
     0 2px 4px
-    rgba(0, 70, 100, .3);
+    rgba(54, 47, 37, .3);
 }
 
 
@@ -870,7 +867,7 @@ footer {
     500;
 
   background:
-    #052e49;
+    #173d68;
 }
 
 #gameFrame {
@@ -920,7 +917,7 @@ footer {
 .player-button {
 
   border:
-    3px solid #032d4c;
+    3px solid #102e4f;
 
   border-radius:
     13px;
@@ -945,7 +942,7 @@ footer {
     pointer;
 
   box-shadow:
-    0 4px 0 #021d31;
+    0 4px 0 #102e4f;
 
   transition:
     .2s;
@@ -954,13 +951,13 @@ footer {
 #original {
 
   background:
-    #08749b;
+    #2d608e;
 }
 
 #close {
 
   background:
-    #06466e;
+    #244f7c;
 }
 
 .player-button:hover {
@@ -998,10 +995,10 @@ footer {
     column;
 
   background:
-    #8ed9eb;
+    #fff8e9;
 
   color:
-    #063e67;
+    #173d68;
 
   font-size:
     22px;
